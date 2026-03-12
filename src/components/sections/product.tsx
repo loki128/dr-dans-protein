@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { FadeIn, StaggerGroup, StaggerItem } from "@/components/motion-wrapper";
+import { motion } from "framer-motion";
+import { FadeIn, Parallax } from "@/components/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
 
 const products = [
@@ -9,115 +10,119 @@ const products = [
     size: "16 oz",
     servings: "~15 servings",
     price: "$34.99",
-    image: "/images/product-real.jpg",
+    image: "/images/hero-product.png",
     popular: false,
   },
   {
     size: "32 oz",
     servings: "~30 servings",
     price: "$54.99",
-    image: "/images/product-real.jpg",
+    image: "/images/hero-product.png",
     popular: true,
   },
 ];
 
 const highlights = [
-  "120 calories per serving",
-  "High protein per scoop",
-  "Whey protein concentrate",
-  "No artificial sweeteners",
+  "120 cal / serving",
+  "Whey concentrate",
+  "No sweeteners",
+  "Batch tested",
 ];
 
 export function Product() {
   return (
-    <section id="product" className="section-padding bg-cream">
-      <div className="mx-auto max-w-6xl px-6">
-        <FadeIn className="text-center mb-16">
-          <p className="eyebrow text-ember mb-4">The Product</p>
-          <h2 className="heading-lg text-3xl md:text-4xl lg:text-5xl text-charcoal mb-4">
+    <section id="product" className="relative section-padding bg-void noise overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blood/20 to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blood/5 rounded-full blur-[200px] pointer-events-none" />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <FadeIn className="text-center mb-8">
+          <p className="eyebrow text-blood mb-4">The Product</p>
+          <h2 className="heading-xl text-4xl md:text-5xl lg:text-6xl text-bone mb-4">
             Strength in Every Scoop
           </h2>
-          <p className="text-charcoal/60 text-lg max-w-2xl mx-auto">
-            One product. Done right. Dr. Dan&apos;s Whey Protein in two sizes —
-            choose what fits your routine.
+          <p className="text-smoke text-lg max-w-xl mx-auto">
+            One product. Done right. No lineup of 47 flavors to distract from
+            what matters — what&apos;s actually inside.
           </p>
         </FadeIn>
 
-        {/* Nutrition highlights */}
-        <FadeIn className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Highlights strip */}
+        <FadeIn delay={0.1} className="flex flex-wrap justify-center gap-3 mb-16">
           {highlights.map((item) => (
-            <Badge
+            <span
               key={item}
-              variant="secondary"
-              className="px-4 py-2 text-xs font-medium bg-stone/50 text-charcoal/80 border-0 rounded-full"
+              className="px-4 py-2 text-xs font-semibold tracking-wider uppercase text-smoke border border-ash rounded-sm"
             >
               {item}
-            </Badge>
+            </span>
           ))}
         </FadeIn>
 
         {/* Product cards */}
-        <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-          {products.map((product) => (
-            <StaggerItem key={product.size}>
-              <div
-                className={`relative flex flex-col items-center p-8 rounded-2xl border transition-all hover:shadow-lg ${
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {products.map((product, i) => (
+            <motion.div
+              key={product.size}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -6 }}
+              className={`group relative flex flex-col items-center p-8 md:p-10 rounded-lg border transition-all duration-300 ${
+                product.popular
+                  ? "bg-steel border-blood/40 shadow-[0_0_40px_rgba(220,38,38,0.1)]"
+                  : "bg-steel/50 border-ash/50 hover:border-ash"
+              }`}
+            >
+              {product.popular && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <Badge className="bg-blood text-white border-0 rounded-sm px-4 py-1 text-[0.65rem] font-bold tracking-widest uppercase">
+                    Best Value
+                  </Badge>
+                </div>
+              )}
+
+              {/* Product image with glow */}
+              <div className="relative w-44 h-52 mb-8">
+                {product.popular && (
+                  <div className="absolute inset-0 bg-blood/10 blur-3xl rounded-full scale-150 pointer-events-none" />
+                )}
+                <Image
+                  src={product.image}
+                  alt={`Dr. Dan's Whey Protein - ${product.size}`}
+                  fill
+                  className="object-contain relative z-10 group-hover:scale-105 transition-transform duration-500"
+                  sizes="176px"
+                />
+              </div>
+
+              <p className="eyebrow text-blood/80 mb-1">Whey Protein</p>
+              <p className="font-serif text-3xl font-bold text-bone mb-1">
+                {product.size}
+              </p>
+              <p className="text-xs text-smoke mb-6">{product.servings}</p>
+
+              <p className="text-4xl font-bold text-bone mb-8 tabular-nums">
+                {product.price}
+              </p>
+
+              <button
+                className={`w-full rounded-sm py-4 text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
                   product.popular
-                    ? "bg-charcoal text-cream border-charcoal shadow-md"
-                    : "bg-warm-white text-charcoal border-stone/50"
+                    ? "bg-blood text-white hover:bg-flame"
+                    : "bg-ash text-bone hover:bg-smoke/20 border border-ash"
                 }`}
               >
-                {product.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-ember text-cream border-0 rounded-full px-4 py-1 text-xs">
-                      Most Popular
-                    </Badge>
-                  </div>
-                )}
-
-                <div className="relative w-40 h-48 mb-6">
-                  <Image
-                    src={product.image}
-                    alt={`Dr. Dan's Whey Protein — ${product.size}`}
-                    fill
-                    className="object-contain"
-                    sizes="160px"
-                  />
-                </div>
-
-                <p
-                  className={`eyebrow mb-1 ${product.popular ? "text-ember-light" : "text-sage"}`}
-                >
-                  Whey Protein
-                </p>
-                <p className="font-serif text-2xl font-bold mb-1">
-                  {product.size}
-                </p>
-                <p
-                  className={`text-sm mb-4 ${product.popular ? "text-cream/60" : "text-charcoal/50"}`}
-                >
-                  {product.servings}
-                </p>
-
-                <p className="text-3xl font-bold mb-6">{product.price}</p>
-
-                <button
-                  className={`w-full rounded-full py-3.5 text-sm font-semibold transition-colors ${
-                    product.popular
-                      ? "bg-cream text-charcoal hover:bg-white"
-                      : "bg-charcoal text-cream hover:bg-charcoal/90"
-                  }`}
-                >
-                  Buy Now
-                </button>
-              </div>
-            </StaggerItem>
+                Buy Now
+              </button>
+            </motion.div>
           ))}
-        </StaggerGroup>
+        </div>
 
         <FadeIn delay={0.3}>
-          <p className="text-center text-charcoal/40 text-sm mt-8">
-            Secure checkout powered by Stripe. Free shipping on orders over $50.
+          <p className="text-center text-smoke/50 text-xs mt-10 tracking-wide">
+            Secure checkout. Free shipping over $50. 30-day satisfaction guarantee.
           </p>
         </FadeIn>
       </div>

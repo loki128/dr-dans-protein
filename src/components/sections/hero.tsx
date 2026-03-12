@@ -2,93 +2,129 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { TextReveal, LineReveal } from "@/components/text-reveal";
+import { Marquee } from "@/components/marquee";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center bg-charcoal text-cream overflow-hidden">
-      {/* Subtle grain overlay */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]" />
+    <section className="relative min-h-screen flex flex-col justify-center bg-void overflow-hidden noise">
+      {/* Ember background image */}
+      <Image
+        src="/images/ember-bg.png"
+        alt=""
+        fill
+        className="object-cover opacity-30 pointer-events-none"
+        priority
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-void/60 via-void/80 to-void pointer-events-none" />
 
-      <div className="relative mx-auto max-w-6xl px-6 pt-24 pb-16 md:pt-32 md:pb-24 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 pt-28 pb-8 md:pt-36 md:pb-16 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Copy */}
           <div className="flex flex-col gap-6 md:gap-8">
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="eyebrow text-sage-light"
-            >
-              Clean Protein. Real Science. No Compromises.
-            </motion.p>
+            <LineReveal delay={0.3}>
+              <p className="eyebrow text-blood">
+                Biologist. Firefighter. Survivor.
+              </p>
+            </LineReveal>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="heading-xl text-4xl md:text-5xl lg:text-6xl"
-            >
-              Protein Built on{" "}
-              <span className="text-ember-light">Principle</span>,{" "}
-              Not Marketing
-            </motion.h1>
+            <h1 className="heading-xl text-5xl md:text-6xl lg:text-7xl text-bone">
+              <TextReveal text="Protein Built" delay={0.4} />
+              <br />
+              <TextReveal text="on Principle," delay={0.6} />
+              <br />
+              <span className="text-blood">
+                <TextReveal text="Not Marketing." delay={0.8} />
+              </span>
+            </h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="text-lg md:text-xl text-cream/70 max-w-lg leading-relaxed"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="text-lg md:text-xl text-smoke max-w-lg leading-relaxed"
             >
-              Created by a biologist, firefighter, and cancer survivor who
-              refused to put anything in his body he couldn&apos;t trust.
-              100% clean. Zero compromises.
+              Created by a man who holds a PhD in biology, served 10 years
+              as a firefighter, and beat cancer. He refused to put anything
+              in his body he couldn&apos;t trust. So he made his own.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
+              transition={{ duration: 0.6, delay: 1.4 }}
               className="flex flex-col sm:flex-row gap-4 mt-2"
             >
               <a
                 href="#product"
-                className="inline-flex items-center justify-center rounded-full bg-cream text-charcoal px-8 py-3.5 text-sm font-semibold hover:bg-white transition-colors"
+                className="group inline-flex items-center justify-center gap-2 rounded-sm bg-blood text-white px-8 py-4 text-sm font-bold tracking-wider uppercase hover:bg-flame transition-all duration-300"
               >
                 Shop Now
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
               </a>
               <a
                 href="#story"
-                className="inline-flex items-center justify-center rounded-full border border-cream/30 text-cream px-8 py-3.5 text-sm font-medium hover:border-cream/60 transition-colors"
+                className="inline-flex items-center justify-center rounded-sm border border-ash text-smoke px-8 py-4 text-sm font-bold tracking-wider uppercase hover:border-smoke hover:text-bone transition-all duration-300"
               >
-                The Story Behind It
+                His Story
               </a>
             </motion.div>
           </div>
 
-          {/* Product image */}
+          {/* Product hero image */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0, y: 40, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="relative flex items-center justify-center"
           >
-            <div className="relative w-full max-w-md mx-auto">
-              <div className="absolute inset-0 bg-ember/10 blur-3xl rounded-full scale-75" />
+            {/* Glow behind product */}
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className="w-64 h-64 md:w-80 md:h-80 bg-blood/20 rounded-full blur-[100px]" />
+            </div>
+            <div className="relative w-full max-w-sm mx-auto">
               <Image
-                src="/images/product-real.jpg"
-                alt="Dr. Dan's No BS Whey Protein — 16oz and 32oz sizes"
-                width={600}
-                height={700}
+                src="/images/hero-product.png"
+                alt="Dr. Dan's No BS Whey Protein — dramatic studio shot"
+                width={500}
+                height={667}
                 priority
-                className="relative z-10 drop-shadow-2xl object-contain"
+                className="relative z-10 drop-shadow-[0_20px_60px_rgba(220,38,38,0.3)] object-contain rounded-lg"
               />
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-cream to-transparent" />
+      {/* Marquee strip */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.8 }}
+        className="relative z-10 border-t border-b border-ash/50 py-4 mt-8 bg-iron/50"
+      >
+        <Marquee
+          items={[
+            "NO FILLERS",
+            "NO ARTIFICIAL SWEETENERS",
+            "NO PROPRIETARY BLENDS",
+            "100% CLEAN WHEY",
+            "BATCH TESTED",
+            "SCIENCE-BACKED",
+            "NO BS",
+          ]}
+          speed={30}
+          className="text-smoke/60"
+        />
+      </motion.div>
     </section>
   );
 }
