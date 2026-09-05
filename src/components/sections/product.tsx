@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FadeIn, Parallax } from "@/components/motion-wrapper";
+import { FadeIn } from "@/components/motion-wrapper";
 import { Badge } from "@/components/ui/badge";
 
 const products = [
