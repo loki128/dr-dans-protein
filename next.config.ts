@@ -6,12 +6,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/eden",
-        destination: "https://app-eight-bice-66.vercel.app/",
+        destination: "https://eden.drdwheyprotein.com/",
         permanent: true,
       },
       {
         source: "/eden-diet",
-        destination: "https://app-eight-bice-66.vercel.app/",
+        destination: "https://eden.drdwheyprotein.com/",
         permanent: true,
       },
     ];
