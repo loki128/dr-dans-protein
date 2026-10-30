@@ -10,7 +10,7 @@ import {
 
 const faqs = [
   {
-    q: "What makes Dr. Dan's protein different from other brands?",
+    q: "What makes Dr. Dan's No BS protein different from other brands?",
     a: "Most protein brands prioritize margins over quality — using fillers, artificial sweeteners, and proprietary blends that hide what's actually inside. Dr. Dan's is formulated by a biologist with a PhD who built this protein to the standard he holds for his own body. No shortcuts. No hidden ingredients. Just clean, effective protein.",
   },
   {

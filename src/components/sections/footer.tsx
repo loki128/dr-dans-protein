@@ -1,31 +1,37 @@
 export function Footer() {
   return (
-    <footer className="bg-cream border-t border-stone/50 py-12">
+    <footer id="contact" className="bg-cream border-t border-stone/50 py-12">
       <div className="mx-auto max-w-6xl px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
           <div className="text-center md:text-left">
             <p className="font-serif text-lg font-bold text-charcoal">
-              Dr. Dan&apos;s
+              Dr. Dan&apos;s No BS
             </p>
             <p className="text-charcoal/40 text-sm mt-1">
-              Clean Protein. Built on Principle.
+              Science. Health. No Hype. No BS.
             </p>
           </div>
 
           {/* Links */}
           <div className="flex items-center gap-8">
             <a
-              href="#story"
+              href="#eating-from-eden"
               className="text-sm text-charcoal/50 hover:text-charcoal transition-colors"
             >
-              Story
+              Eating from Eden
             </a>
             <a
               href="#product"
               className="text-sm text-charcoal/50 hover:text-charcoal transition-colors"
             >
-              Product
+              Protein
+            </a>
+            <a
+              href="#story"
+              className="text-sm text-charcoal/50 hover:text-charcoal transition-colors"
+            >
+              About
             </a>
             <a
               href="#faq"
@@ -76,7 +82,7 @@ export function Footer() {
 
         <div className="mt-10 pt-6 border-t border-stone/30 text-center">
           <p className="text-charcoal/30 text-xs">
-            {new Date().getFullYear()} Dr. Dan&apos;s Protein. All rights
+            &copy; {new Date().getFullYear()} Dr. Dan&apos;s No BS Protein, LLC. All rights
             reserved.
           </p>
         </div>

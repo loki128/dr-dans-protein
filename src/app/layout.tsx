@@ -15,13 +15,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Dr. Dan's Protein | Clean Protein, Built on Principle",
+  title: "Dr. Dan's No BS | Science. Health. No Hype. No BS.",
   description:
-    "100% clean whey protein created by a biologist, firefighter, and cancer survivor. No fillers. No BS. Just protein you can trust.",
+    "Science-based nutrition and health from Dr. Dan's No BS: the book Eating from Eden, evidence-based education, and 100% clean whey protein. Science. Health. No Hype. No BS.",
   openGraph: {
-    title: "Dr. Dan's Protein | Clean Protein, Built on Principle",
+    title: "Dr. Dan's No BS | Science. Health. No Hype. No BS.",
     description:
-      "100% clean whey protein created by a biologist, firefighter, and cancer survivor. No fillers. No BS. Just protein you can trust.",
+      "Science-based nutrition and health from Dr. Dan's No BS: the book Eating from Eden, evidence-based education, and 100% clean whey protein. Science. Health. No Hype. No BS.",
     type: "website",
   },
 };

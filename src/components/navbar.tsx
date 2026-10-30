@@ -4,10 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
-  { label: "Story", href: "#story" },
-  { label: "The Standard", href: "#purity" },
-  { label: "Product", href: "#product" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Home", href: "#" },
+  { label: "Eating from Eden", href: "#eating-from-eden" },
+  { label: "Protein", href: "#product" },
+  { label: "About", href: "#story" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -17,7 +18,7 @@ export function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-cream/80 backdrop-blur-md border-b border-stone/50">
       <div className="mx-auto max-w-6xl px-6 flex items-center justify-between h-16">
         <a href="#" className="font-serif text-xl font-bold tracking-tight text-charcoal">
-          Dr. Dan&apos;s
+          Dr. Dan&apos;s No BS
         </a>
 
         {/* Desktop nav */}
