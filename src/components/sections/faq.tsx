@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Is this protein safe for people with food sensitivities?",
-    a: "Dr. Dan's Whey Protein is made with a simple, transparent ingredient list specifically because many customers are health-sensitive or ingredient-conscious. That said, it does contain whey (a dairy derivative). If you have specific allergies, we always recommend reviewing the full ingredient label or consulting your healthcare provider.",
+    a: "Dr. Dan's No BS Whey Protein is made with a simple, transparent ingredient list specifically because many customers are health-sensitive or ingredient-conscious. That said, it does contain whey (a dairy derivative). If you have specific allergies, we always recommend reviewing the full ingredient label or consulting your healthcare provider.",
   },
   {
     q: "What are the exact ingredients?",

@@ -90,7 +90,7 @@ export function Product() {
                 )}
                 <Image
                   src={product.image}
-                  alt={`Dr. Dan's Whey Protein - ${product.size}`}
+                  alt={`Dr. Dan's No BS Whey Protein - ${product.size}`}
                   fill
                   className="object-contain relative z-10 group-hover:scale-105 transition-transform duration-500"
                   sizes="176px"
